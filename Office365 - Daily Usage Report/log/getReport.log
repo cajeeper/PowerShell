@@ -1,0 +1,29 @@
+[Start Batch - 10/03/2015 05:00:17]
+Get-Recipient - Recipients: 191065 - 10/03/2015 05:37:34]
+Get-MessageTrace completed. - 10/03/2015 05:51:41]
+Formatted results into datatable. - MessageTrace Records: 17443 - 10/03/2015 05:51:53]
+Imported data into temporary table -  - 10/03/2015 05:52:05
+Merged the import data into the report table - Rows: 17443 - 10/03/2015 05:52:10
+Cleaned-up the import table - Rows: 17443 - 10/03/2015 05:52:10
+[End Batch - 10/03/2015 05:52:10]
+[Start Batch - 10/04/2015 05:00:14]
+Get-Recipient - Recipients: 191078 - 10/04/2015 05:37:38]
+Get-MessageTrace completed. - 10/04/2015 05:47:18]
+Formatted results into datatable. - MessageTrace Records: 14175 - 10/04/2015 05:47:26]
+Imported data into temporary table -  - 10/04/2015 05:47:34
+Merged the import data into the report table - Rows: 14175 - 10/04/2015 05:47:39
+Cleaned-up the import table - Rows: 14175 - 10/04/2015 05:47:39
+[End Batch - 10/04/2015 05:47:39]
+[Start Batch - 10/05/2015 05:00:17]
+Get-Recipient - Recipients: 191085 - 10/05/2015 05:38:29]
+Get-MessageTrace completed. - 10/05/2015 05:56:49]
+Formatted results into datatable. - MessageTrace Records: 11912 - 10/05/2015 05:56:57]
+Imported data into temporary table -  - 10/05/2015 05:57:06
+Merged the import data into the report table - Rows: 11912 - 10/05/2015 05:57:11
+Cleaned-up the import table - Rows: 11912 - 10/05/2015 05:57:11
+[End Batch - 10/05/2015 05:57:11]
+[Start Batch - 10/06/2015 05:00:16]
+Get-Recipient - Recipients: 191152 - 10/06/2015 05:49:50]
+Get-MessageTrace completed. - 10/06/2015 05:49:51]
+Formatted results into datatable. - MessageTrace Records: 0 - 10/06/2015 05:49:54]
+[End Batch - 10/06/2015 05:49:54]
