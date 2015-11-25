@@ -18,7 +18,10 @@ $Results = Invoke-Command -ComputerName $Servers -ScriptBlock {
  }
 }
 
+$Results | ft PSComputerName, DNS, HostFile
+
 #Using WMIC and Remote Admin Shares
+# - Needed for older machines without Remote PowerShell enabled
 $Results = Invoke-Command -ScriptBlock {
 	foreach ($OnlineComputer in $OnlineComputers) {
 		$dns = ""
@@ -34,7 +37,7 @@ $Results = Invoke-Command -ScriptBlock {
 		New-Object PSCustomObject -Property @{
 			"HostFile" = $hostfile
 			"DNS" = $dns
-			"PSComputerName" = $OnlineComputer 
+			"PSComputerName" = $OnlineComputer
 		}
 	}
 }
