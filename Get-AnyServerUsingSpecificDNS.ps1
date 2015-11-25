@@ -43,3 +43,5 @@ $Results = Invoke-Command -ScriptBlock {
 }
 
 $Results | ft PSComputerName, DNS, HostFile
+
+#$Results | ? { $_.HostFile -eq $True -or $_.DNS -eq $True }
