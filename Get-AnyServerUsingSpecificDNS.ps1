@@ -1,13 +1,17 @@
 #Script to hunt through systems for DNS server entered in hostfile or DNS list in network adapters
 
-.\get-myservers.ps1
+#.\get-myservers.ps1
 
-$Servers = $OnlineComputers
+#$Servers = $OnlineComputers
+$Servers = "HostA", "HostB"
+
+$SelectStringSearch =	"192.168.1.2","192.168.1.3"
+$MatchString = 			"192.168.1.2|192.168.1.3"
 
 #Using invoke remotely
-$results = Invoke-Command -ComputerName $Servers -ScriptBlock {
- $hostfile = Get-Content -Path 'C:\Windows\System32\drivers\etc\hosts' | Select-String "172.16.3." -quiet
- (Get-DnsClientServerAddress).ServerAddresses | ? { $_ -match "10.31|172.16.3" } | % { $dns = $true }
+$Results = Invoke-Command -ComputerName $Servers -ScriptBlock {
+ $hostfile = Get-Content -Path 'C:\Windows\System32\drivers\etc\hosts' | Select-String $SelectStringSearch -quiet
+ (Get-DnsClientServerAddress).ServerAddresses | ? { $_ -match $MatchString } | % { $dns = $true }
  New-Object PSCustomObject -Property @{
   "HostFile" = $hostfile
   "DNS" = $dns
@@ -17,14 +21,16 @@ $results = Invoke-Command -ComputerName $Servers -ScriptBlock {
 #Using WMIC and Remote Admin Shares
 $Results = Invoke-Command -ScriptBlock {
 	foreach ($OnlineComputer in $OnlineComputers) {
-
-		$file = "\\$($OnlineComputer )\C$\Windows\System32\drivers\etc\hosts"
-
+		$dns = ""
+		$hostfile = ""
+		
+		$file = "\\$($OnlineComputer)\C$\Windows\System32\drivers\etc\hosts"
+		
 		if((Test-Path -Path $file) -eq $true) {
-		Get-Content -Path $file | Select-String "172.16.3." -quiet | % { $hostfile = $true } 
+		Get-Content -Path $file | Select-String $SelectStringSearch -quiet | % { $hostfile = $true } 
 		}
 
-		$dns = wmic /node:`'$OnlineComputer`' nicconfig get DNSServerSearchOrder | Select-String "172.16.3","10.31" -Quiet
+		$dns = wmic /node:`'$OnlineComputer`' nicconfig get DNSServerSearchOrder | Select-String $SelectStringSearch -Quiet
 		New-Object PSCustomObject -Property @{
 			"HostFile" = $hostfile
 			"DNS" = $dns
