@@ -1,3 +1,5 @@
+#Created to cleanup email accidently sent to our Office365 users that was unwanted
+
 $LiveCred = Get-Credential
 
 $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://ps.outlook.com/powershell/ -Credential $LiveCred -Authentication Basic -AllowRedirection
