@@ -3,7 +3,7 @@
   Remove One to Many Windows Updates
     
  .DESCRIPTION   
-  You can specify a single VM, multiple VMs, or discover all VMs in your environment and either trigger updates or view the VM(s) found.  
+  Remove One to Many Windows Updates from OS.
     
  .NOTES   
   Author   : Justin Bennett   
