@@ -67,7 +67,7 @@ try {
 	$Page = 1 
 	do 
 	{ 
-		Write-Host "Collecting Message Tracking - Page $Page..." 
+		Write-Verbose "Collecting Message Tracking - Page $Page..." 
 		$CurrMessages = Get-MessageTrace -PageSize 5000 -Page $Page | Select Received,SenderAddress,RecipientAddress,Size
 		$Page++ 
 		$Messages += $CurrMessages 
@@ -77,7 +77,7 @@ try {
 	[void]$log.appendline((("Get-MessageTrace completed. - ")+(get-date)+("]"))) 	
 	Remove-PSSession $session 
 	 
-	Write-Host "Crunching Results..." 
+	Write-Verbose "Crunching Results..." 
 	 
 	#Read each message tracking entry and add it to a hash table 
 	foreach($Message in $Messages) 
@@ -137,7 +137,7 @@ try {
 
 #[uploadReport]
 try {
-	Write-Host "Formatting Results..." 
+	Write-Verbose "Formatting Results..." 
 		
 	#Build a table to format the results 
 	$table = New-Object system.Data.DataTable "DetailedMessageStats"  
@@ -182,7 +182,7 @@ try {
 
 		$sqlsvr = "YOUR_SQL"
 		
-		Write-Host "Results saving in to SQL - $($sqlsvr)"
+		Write-Verbose "Results saving in to SQL - $($sqlsvr)"
 		
 		$database = "NetworkReporting"
 		$tableName = "[NetworkReporting].[dbo].[ImportEmailStats]"

@@ -35,7 +35,7 @@ try {
 
 	$sqlsvr = "YOUR_SQL"
 	
-	Write-Host "Results saving in to SQL - $($sqlsvr)"
+	Write-Verbose "Results saving in to SQL - $($sqlsvr)"
 	[void]$log.appendline((("Connecting to SQL - ")+(get-date)))
 
 	$database = "NetworkReporting"
