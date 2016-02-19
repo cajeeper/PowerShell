@@ -158,14 +158,14 @@ function Move-Ou {
 				$DirSearcher = new-object System.DirectoryServices.DirectorySearcher($root)
 				$DirSearcher.filter = "(&(name=$($ComputerName)))"
 				$results = $DirSearcher.findall()
-				$ADComputer = [adsi]($results.path)
+				$ADComputer = [adsi](($results)[0].path)
 				
 				$ADComputer.psbase.moveto([adsi]($x.path))
 				
 				$DirSearcher = new-object System.DirectoryServices.DirectorySearcher($root)
 				$DirSearcher.filter = "(&(name=$($ComputerName)))"
 				$results = $DirSearcher.findall()
-				$wshell.Popup("Operation Completed - Computer path now $($results.path)",0,"Done",0x1)
+				$wshell.Popup("Operation Completed - Computer path now $(($results)[0].path)",0,"Done",0x1)
 				} catch { $wshell.Popup("Operation Failed - $($_)",0,"Error",0x1)}
 			}
 	} else { $wshell.Popup("Operation Failed - ComputerName $($ComputerName): Not Found or More Than One Found",0,"Error",0x1) }
