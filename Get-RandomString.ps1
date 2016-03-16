@@ -11,8 +11,7 @@
 	Changes  : 	v1.0 Original
 #>
 #random complex string, length of 10
-( 1..10 | % { "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-=_+[{}]\
-|,<>./?".ToCharArray() | Get-Random } ) -join ''
+( 1..10 | % { "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-=_+[{}]\|,<>./?".ToCharArray() | Get-Random } ) -join ''
 
 #random basic string, length of 10
 ( 1..10 | % { "abcdefghijklmnopqrstuvwxyz0123456789".ToCharArray() | Get-Random } ) -join ''
