@@ -9,8 +9,6 @@
 	Date           : 2016-03-16
 	Revision : v1.0
 	Changes  : 	v1.0 Original
-.LINK
-.PARAMETER ComputerName
 #>
 #random complex string, length of 10
 ( 1..10 | % { "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-=_+[{}]\
