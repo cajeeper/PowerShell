@@ -18,6 +18,9 @@
 #Install Roles
 Get-WindowsFeature | ? { $_.Name -match "RDS-Licensing|RDS-RD-Server" } | Install-WindowsFeature
 
+#Allow RDP Access to the server
+Set-ItemProperty "hklm:\SYSTEM\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
+
 #Per Device  
 #$licenseMode = 2
 
@@ -39,5 +42,7 @@ New-ItemProperty "hklm:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services
 
 #Update GPO for Shadowing Users
 gpupdate /force
+
+#Open the firewall for RDP
 
 #reboot may be needed from Windows Feature Installation
