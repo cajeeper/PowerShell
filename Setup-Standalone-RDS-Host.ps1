@@ -20,6 +20,7 @@ Get-WindowsFeature | ? { $_.Name -match "RDS-Licensing|RDS-RD-Server" } | Instal
 
 #Allow RDP Access to the server
 Set-ItemProperty "hklm:\SYSTEM\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
+#Get-ItemProperty "hklm:\SYSTEM\CurrentControlSet\Control\Terminal Server" 
 
 #Per Device  
 #$licenseMode = 2
@@ -31,10 +32,10 @@ $licenseMode = 4
 $licenseServer = "$env:computername.$env:userdnsdomain"
 
 Set-ItemProperty "hklm:\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\Licensing Core\" -Name "LicensingMode" -Value $licenseMode  
-Get-ItemProperty "hklm:\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\Licensing Core\" -Name "LicensingMode"  
+#Get-ItemProperty "hklm:\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\Licensing Core\" -Name "LicensingMode"  
 New-Item "hklm:\SYSTEM\CurrentControlSet\Services\TermService\Parameters\LicenseServers"
 New-ItemProperty "hklm:\SYSTEM\CurrentControlSet\Services\TermService\Parameters\LicenseServers" -Name SpecifiedLicenseServers -Value $licenseServer -PropertyType "MultiString"  
-Get-ItemProperty "hklm:\SYSTEM\CurrentControlSet\Services\TermService\Parameters\LicenseServers" -Name SpecifiedLicenseServers   
+#Get-ItemProperty "hklm:\SYSTEM\CurrentControlSet\Services\TermService\Parameters\LicenseServers" -Name SpecifiedLicenseServers   
 
 #Allow Shadowing Users
 # Values: 0 (No Remote Control), 1 (Full Control with user's permission), 2 (Full Control without user's permission), 3 (View Session with user's permission), 4 (View Session without user's permission)
@@ -44,5 +45,6 @@ New-ItemProperty "hklm:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services
 gpupdate /force
 
 #Open the firewall for RDP
+netsh firewall set service remotedesktop
 
 #reboot may be needed from Windows Feature Installation
