@@ -5,7 +5,7 @@
  .DESCRIPTION
   Wrote this script to speed up the deployment of standalone RDS hosts. It includes
   installing the base Windows Features in order to single server host RDS, updating
-  the license server parameter for the correct servername - based of the current
+  the license server parameter for the correct servername - based off the current
   computer name, the licensing mode, and enabling shadowing users.
  
  .NOTES   
