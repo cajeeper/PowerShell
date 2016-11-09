@@ -33,4 +33,4 @@ Get-WmiObject win32_process -ComputerName localhost | Select SessionId | ? { $_.
 #or
 get-process | ? { $_.SessionId -gt 0 } | Select -Unique SessionId | % { & logoff $_.SessionId }
 #or from batch script
-powershell.exe -c "get-process | ? { $_.SessionId -gt 1 } | Select -Unique SessionId | % { & logoff $_.SessionId }"
+powershell.exe -c "get-process | ? { $_.SessionId -gt 1 } | Select -Unique SessionId | %% { & logoff $_.SessionId }"
