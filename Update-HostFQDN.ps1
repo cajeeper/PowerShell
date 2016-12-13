@@ -19,6 +19,8 @@ if ((gwmi win32_computersystem).partofdomain -eq $true) {
      $adObj= [ADSI] $searchADItem.Path
      $oldadObjSPN = $searchADItem.Properties.serviceprincipalname
      $adObj.Put('serviceprincipalname',($oldadObjSPN -replace $oldDNSSuffix, $DNSSuffix))
+	 $oldadObjDNS = $searchADItem.Properties.dnsHostName
+	 $adObj.Put('dnsHostName',($oldadObjDNS -replace $oldDNSSuffix, $DNSSuffix))
      $adObj.setinfo()
      #$adObj.Get('serviceprincipalname')
 }
