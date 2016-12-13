@@ -23,4 +23,5 @@ if ((gwmi win32_computersystem).partofdomain -eq $true) {
      $adObj.Put('dnsHostName',($oldadObjDNS -replace $oldDNSSuffix, $DNSSuffix))
      $adObj.setinfo()
      #$adObj.Get('serviceprincipalname')
+	 #$adObj.Get('dnsHostName')
 }
