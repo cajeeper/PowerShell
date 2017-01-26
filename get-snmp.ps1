@@ -9,7 +9,8 @@
   Author   : Justin Bennett   
   Date     : 2015-03-10  
   Contact  : http://www.allthingstechie.net
-  Revision : v1  
+  Revision : v1.01
+  Changes  : v1.01 - Changed Write-Error to Throw  
    
  .PARAMETER ip  
   IP Address or Hostname  
@@ -86,7 +87,7 @@
            }  
     }  
        default {  
-             write-error $output  
+             throw $output  
            }  
       }  
  }  
