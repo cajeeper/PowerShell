@@ -1,0 +1,4 @@
+https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt
+Removed the first tab delimitated column.
+6:42 PM 9/19/2019
+jb
