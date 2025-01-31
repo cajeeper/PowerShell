@@ -1,3 +1,6 @@
+#Ensure the Active Directory PowerShell module is installed.
+#You can install it with Check-Install-RSAT-AD.ps1
+
 # Define output file path
 $OutputFile = "C:\Temp\ADUsers_Groups.csv"
 
@@ -9,7 +12,6 @@ if (-not (Get-Module -ListAvailable -Name ActiveDirectory)) {
 
 # Get all enabled/disabled users from Active Directory with additional properties
 $Users = Get-ADUser -Filter * -Property SamAccountName, DisplayName, EmailAddress, LastLogonDate, Enabled
-Install-WindowsFeature -Name RSAT-AD-PowerShell
 
 # Create an array to store user-group relationships
 $UserGroupList = @()
